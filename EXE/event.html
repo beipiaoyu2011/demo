@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        p {
+            height: 30px;
+            margin: 20px;
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>demo</p>
+        <p>demo</p>
+        <p>demo</p>
+        <p>demo</p>
+        <image class="img" src="./images/2.jpg">
+
+        </image>
+    </div>
+
+
+    <script>
+        const div = document.querySelector('div');
+        div.addEventListener('mouseenter', () => {
+            div.style.backgroundColor = 'red';
+            setTimeout(() => {
+                div.style.backgroundColor = '';
+            }, 2000)
+        });
+
+        div.addEventListener('mousedown', () => {
+            console.log('mousedown');
+        });
+        div.addEventListener('click', (e) => {
+            console.log('click', e);
+        });
+        div.addEventListener('mouseup', () => {
+            console.log('mouseup');
+        });
+
+        const event = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true
+        });
+        // div.dispatchEvent(event);
+
+        const bodyClick = function (e) {
+            console.log('alt', e.altKey);
+            console.log('shift', e.shiftKey);
+            console.log('meta', e.metaKey);
+            console.log('ctrl', e.ctrlKey);
+        };
+        // document.body.setAttribute('onclick', "bodyClick(event)");
+
+        const img = document.querySelector('.img');
+        console.time('img');
+        if (img.complete) {
+            console.log('已经加载完毕');
+        } else {
+            console.log('not yet load')
+            img.addEventListener('load', () => {
+                console.log('load end');
+                console.timeEnd('img');
+
+            })
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
