@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>drag</title>
+    <style>
+        .dropzone {
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            float: left;
+        }
+
+        #draggable {
+            background: orange;
+            line-height: 2;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dropzone">
+        <div id="draggable" draggable="true">
+            I can be draggable
+        </div>
+    </div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+
+    <script>
+        let dragged;
+        document.addEventListener('dragstart', e => {
+            dragged = e.target;
+            e.target.style.opacity = 0.5;
+            console.log('dragged', dragged);
+        }, false);
+        document.addEventListener('dragend', e => {
+            dragged.style.opacity = '';
+        }, false);
+        document.addEventListener('dragover', e => {
+            e.preventDefault();
+        }, false)
+        document.addEventListener('dragenter', e => {
+            e.preventDefault();
+            if (e.target.classList.contains('dropzone')) {
+                e.target.style.backgroundColor = 'purple';
+            }
+        }, false)
+        document.addEventListener('dragleave', e => {
+            e.preventDefault();
+            if (e.target.classList.contains('dropzone')) {
+                e.target.style.backgroundColor = '';
+            }
+        }, false);
+        document.addEventListener('drop', e => {
+            e.preventDefault();
+            if (e.target.classList.contains('dropzone')) {                
+                e.target.style.backgroundColor = '';
+                dragged.parentNode.removeChild(dragged);
+                e.target.appendChild(dragged);
+            }
+        }, false);
+
+
+
+
+
+    </script>
+</body>
+
+</html>
