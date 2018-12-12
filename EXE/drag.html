@@ -36,8 +36,10 @@
     <script>
         let dragged;
         document.addEventListener('dragstart', e => {
-            dragged = e.target;
-            e.target.style.opacity = 0.5;
+            dragged = e.target.cloneNode(true);
+            setTimeout(()=>{
+                e.target.style.opacity = 0;
+            });
             console.log('dragged', dragged);
         }, false);
         document.addEventListener('dragend', e => {
@@ -45,6 +47,8 @@
         }, false);
         document.addEventListener('dragover', e => {
             e.preventDefault();
+            e.stopPropagation();
+            e.dataTransfer.dropEffect = 'link';
         }, false)
         document.addEventListener('dragenter', e => {
             e.preventDefault();
@@ -60,9 +64,11 @@
         }, false);
         document.addEventListener('drop', e => {
             e.preventDefault();
-            if (e.target.classList.contains('dropzone')) {                
+            if (e.target.classList.contains('dropzone')) { 
+                console.log(e.target);
+                
                 e.target.style.backgroundColor = '';
-                dragged.parentNode.removeChild(dragged);
+                // dragged.parentNode.removeChild(dragged);
                 e.target.appendChild(dragged);
             }
         }, false);

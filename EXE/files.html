@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>files</title>
+</head>
+
+<body>
+    <div class="drag" draggable="true" style="display:inline-block;background:red;padding:20px">
+        aaa
+    </div>
+    <div class="drop" style="height:500px;width:500px;border:1px solid red;">
+        <div>drop here</div>
+    </div>
+    <script>
+        var dropNode = document.querySelector('.drop');
+        var dragNode = document.querySelector('.drag');
+        console.log(document.getElementsByClassName('drop'));
+
+        dragNode.addEventListener('dragstart', e => {
+            const dataTransfer = e.dataTransfer;
+            const img = document.createElement('img');
+            img.src = 'http://pic.58pic.com/58pic/13/53/30/36G58PICBcS_1024.jpg';
+            dataTransfer.setDragImage(img, 100, 100);
+            dataTransfer.clearData();
+            dataTransfer.setData('text/plain', '8888')
+            dataTransfer.setData('text/plain', '9999')
+            dataTransfer.setData('text/url-list', 'http://www.baidu.com')
+
+        }, false)
+
+        dropNode.addEventListener('dragenter', e => {
+            dropNode.innerHTML = '';
+            e.preventDefault();
+            e.preventDefault();
+        }, false);
+
+        dropNode.addEventListener('dragover', e => {
+            e.stopPropagation();
+            e.preventDefault();
+        }, false)
+
+        dropNode.addEventListener('drop', e => {
+            e.stopPropagation();
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+            var items = e.dataTransfer.items;
+            console.log(e.dataTransfer);
+
+            for (var i = 0; i < items.length; i++) {
+                const type = items[i].type;
+                console.log(items[i].kind, items[i].type);
+                if (type == 'text/plain') {
+                    const txt = e.dataTransfer.getData('text/plain');
+                    e.target.textContent = txt;
+                } else if (type == 'text/url-list') {
+                    const a = document.createElement('a');
+                    const url = e.dataTransfer.getData('text/url-list');
+                    a.href = url;
+                    a.textContent = url;
+                    e.target.appendChild(a);
+                }
+            }
+            if (!files.length) return;
+            var file = files[0];
+            var reader = new FileReader();
+            reader.onloadend = e => {
+                console.log(e.target.readyState, FileReader.DONE, file);
+                if (e.target.readyState == FileReader.DONE) {
+                    var content = reader.result;
+                    dropNode.innerHTML += '<br>' + file.name + '<br>' + content;
+                }
+            }
+            reader.readAsBinaryString(file);
+
+        }, false)
+
+    </script>
+</body>
+
+</html>
