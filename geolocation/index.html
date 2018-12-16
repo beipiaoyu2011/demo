@@ -12,7 +12,7 @@
   <script>
     if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
-        alert('position', position);
+        alert('position', JSON.stringify(position.coords));
 
     }, function (error) {
         alert(error);
