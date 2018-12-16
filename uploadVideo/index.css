@@ -1,0 +1,35 @@
+.uploadBox {
+  width: 100%;
+  text-align: center;
+}
+.uploadHandler {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  border: 1px solid gray;
+  margin-top: 100px;
+}
+.uploadBtn {
+  width: 120px;
+  height: 36px;
+  background: red;
+  color: #fff;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.inputFileBtn {
+  opacity: 0;
+  width: 120px;
+  height: 36px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -60px;
+  z-index: 6;
+  cursor: pointer;
+}
