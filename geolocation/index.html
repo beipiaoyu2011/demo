@@ -10,12 +10,17 @@
     demo
 
   <script>
+      window.onhashchange = e=>{
+          console.log(e.newURL);
+          
+      }
+
     if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
         alert('position', JSON.stringify(position.coords));
 
     }, function (error) {
-        alert(error);
+        alert(JSON.stringify(error));
 
     }, {
         enableHighAccuracy: false,
