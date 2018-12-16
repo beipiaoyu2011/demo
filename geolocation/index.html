@@ -12,10 +12,10 @@
   <script>
     if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
-        console.log('position', position);
+        alert('position', position);
 
     }, function (error) {
-        console.log(error);
+        alert(error);
 
     }, {
         enableHighAccuracy: false,
