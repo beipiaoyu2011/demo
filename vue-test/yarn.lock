@@ -7630,6 +7630,11 @@ vue@^2.6.6:
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
   integrity sha1-8hy8U2v8FPfR15KhN7sS9p5g6pE=
 
+vuex-local-sync@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/vuex-local-sync/-/vuex-local-sync-0.0.8.tgz#6ea068d0aa151040e6fcd6ecf206da089b7141e2"
+  integrity sha512-IufNBxp5D4e2oeXDs1+LAoHWFuk/fousMe0fKAUsFjXSsSH+rqpjohGH7b7MsDyOkyChPshkzbmbuDcYnm4GYA==
+
 vuex@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"

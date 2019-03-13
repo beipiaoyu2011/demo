@@ -21,7 +21,7 @@ export default {
     btnClick(){
       this.setName(99);
     }
-  }
+  },
 }
 </script>
 

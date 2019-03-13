@@ -3,6 +3,16 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
+import {VueLocalSync} from 'vuex-local-sync';
+console.log(Vue.prototype);
+
+
+const LocalSyncPlugin = new VueLocalSync({
+  key: 'test',
+  storage: localStorage
+});
+
+
 const key = 'alex';
 
 const myPlugin = store => {
@@ -23,7 +33,7 @@ const mutations = {
 
 const store = new Vuex.Store({
   state: {},
-  plugins: [myPlugin],
+  plugins: [myPlugin, LocalSyncPlugin.plugin],
   mutations
 });
 
