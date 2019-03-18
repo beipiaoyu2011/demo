@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 import {VueLocalSync} from 'vuex-local-sync';
-console.log(Vue.prototype);
 
 
 const LocalSyncPlugin = new VueLocalSync({

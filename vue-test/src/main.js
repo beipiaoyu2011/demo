@@ -5,10 +5,14 @@ Vue.config.productionTip = false
 
 import store from './vuex'
 
-console.log(App);
+// console.log(Vue.prototype);
 
 
 new Vue({
+  el:'#app',
   store,
   render: h => h(App),
-}).$mount('#app')
+})
+
+
+
